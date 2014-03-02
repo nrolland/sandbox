@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title> xQuant         </title>
+    <title> xQuant  Reactive programming and iPhone 5S       </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="These are various notes of computer science subjects. They sometime have accompanying F# implementation They are authored in a litterate programming style and each document is a valid.">
     <meta name="author" content="Nicolas Rolland">
@@ -89,7 +89,7 @@
   <div class="container">
       <div class="navbar">
         <div class="navbar-inner">
-        <a class="brand" href="#">  </a>
+        <a class="brand" href="#">Reactive programming and iPhone 5S  </a>
           <hr>
         <ul class="nav">
           <li><a href="/">Home</a></li>
@@ -101,19 +101,118 @@
       </div>
       <hr>
     <div class="centered">
-      <p>Welcome,</p>
+      
+  <div class='post'>
+    <h1>Reactive programming and iPhone 5S</h1>
+    <aside>Posted on : 2013-09-16 11:00:00 +0200</aside>
+      <article>
+        <h1 id="regression-projection-probability-all-the-way-down">Regression, projection, probability, all the way down</h1>
 
+<p>It is easy to know a few areas of math or physics and retain the intuition of it, while lacking the ability to prove things down to the core. </p>
 
+<p>Getting the right intuition is essential, but sometimes I find myself wanting to check if what I take for granted I could indeed prove.</p>
 
-<p>This is a repository of explorations related to <em>computation</em>, <em>machine learning</em>, and all that..</p>
+<p>The topic of regression actually brings up a few essential pieces that comes over and over again, and is therefore a nice place to try to do that exercice.</p>
 
-<P>It is a purposefully small and focused window on such subjects for which I found time, tools, and envy to write about</p>
+<h2 id="regression">Regression</h2>
 
+<p>The regression of observed data $Y$ on parameters $X$ comes from hypothesis $Y=f(X)+\epsilon$ leading to estimate $\widehat Y = \widehat f(X)$ close to observed data.</p>
 
+<p>That means choosing a distance, and minimize. for $L2$ norm </p>
 
-Nicolas 
+<p>$\widehat f(X) = argmin_{f \in F}  | Y - f(X)  |_2$</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Such a choice leads, as we’ll see, to the <em>result</em> $\widehat Y = E\lbrack Y</td>
+      <td>X \rbrack$, the conditional expectation being <em>defined</em> independantly.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Such a statement is actually quite rich, and an occasion to drill into probability and projection, a fundamental operation in many context, as we will see in more advanced topics like information theory.</p>
+
+<hr />
+<p>Projection
+———</p>
+
+<p>A linear operator P from a Hibert to a closed subset verifying $P=P^2$ defines a projection. The decomposition $I = P + (I-P)$ is a <strong>direct sum</strong></p>
+
+<blockquote>
+  <p>$P(1-P)=(1-P)P=0$ 
+and 
+for any operators $P,Q$ 
+$x,x’ \in Range(P)$
+$y,y’\in Range(Q)$ </p>
+
+  <p>$x+y =x’+y’ $ </p>
+
+  <p>$PQ=0 \implies  P(x + y) = P(x’+y’) \implies  x = x’$ 
+$QP=0 \implies  Q(x + y) = Q(x’+y’) \implies  y = y’$ </p>
+
+  <p>so the decomposition is <strong>unique</strong></p>
+</blockquote>
+
+<h3 id="projection-as-a-minimum">Projection as a minimum</h3>
+
+<p>More generally, we define a projection of x on C to be the possible solution to
+$$\begin{align}
+\min_{{y \in C}}	 \Phi(x,y)
+\end{align}$$</p>
+
+<p>if $\Phi$ is lower-semi continuous,  coercive, $C$ is closed </p>
+
+<blockquote>
+  <p>$f$ lower semi-continuous :
+  $\begin{align<em>}
+  &amp;  f(\mathop{\underline{\lim}} x_n) \leq \mathop{\underline{\lim}} f(x_n) <br />
+  \iff &amp;\forall \alpha { x  \, \mid \,  f(x)\leq \alpha } \mbox{is closed}<br />
+  \iff &amp;\forall \alpha { x  \, \mid \,  f(x) &gt; \alpha } \mbox{is a neighbourhood of all its point}<br />
+  \iff &amp;\forall \alpha\,f(x) &gt;\alpha \implies \exists N \in \mathcal{N}(x) \, \mid \,  f(N) &gt; \alpha \<br />
+  \iff &amp;\forall \epsilon = f(x)-\alpha \space \exists N \in \mathcal{N}(x)  \, \mid \,  f(N) \geq f(x) -\epsilon<br />
+  \iff &amp;\forall \epsilon  \, \exists N \in \mathcal{N}(x)  \, \mid \,  N  \subset f^{-1}([f(x) -\epsilon, \infty[)  \<br />
+  \iff &amp;\forall \epsilon \, f^{-1}([f(x) -\epsilon, \infty[) \subset \mathcal{N}(x) 
+ \end{align</em>}$</p>
+</blockquote>
+
+<blockquote>
+  <p>$f$ upper semi-continuous : $\mathop{\overline{\lim}} f(x_n) \leq  f(\mathop{\overline{\lim}} x_n)\$ 
+$\begin{align<em>}
+  \mbox{ $f$ continuous} &amp;\iff  f(\mathop{\underline{\lim}} x_n) \leq \mathop{\underline{\lim}} f(x_n) \leq \mathop{\overline{\lim}} f(x_n) \leq  f(\mathop{\overline{\lim}} x_n) <br />
+ &amp;\iff f \mbox{ upper and lower semi-continuous } 
+ \end{align</em>}$</p>
+</blockquote>
+
+<p>that leads to the notion of infimum s of a set C:
+forall V(c) \cap C &lt;&gt; null</p>
+
+<h3 id="why-is-it-so-simple-in-a-hilbert-space">Why is it so simple in a Hilbert space</h3>
+
+<p>x measurable is closed in a banach therefore it is a banach</p>
+
+<h2 id="conditional-expectation">Conditional expectation</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>$$\widehat f(X) = E\lbrack Y</td>
+      <td>X \rbrack$$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We can define</p>
+
+<blockquote>
+  <p>Written with <a href="https://stackedit.io/">StackEdit</a>.%</p>
+</blockquote>
+
+      </article>
+  </div>
 
     </div>
     </div>
   </body>
 </html>
+
