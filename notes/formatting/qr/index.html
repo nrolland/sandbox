@@ -26,8 +26,9 @@
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
           tex2jax: {
-              inlineMath: [['$','$'], ['\\(','\\)']],
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'] // removed 'code' entry
+        inlineMath: [['$','$'], ['\\(','\\)']],
+
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'] // removed 'code' entry
           }
       });
       MathJax.Hub.Queue(function() {
@@ -105,32 +106,33 @@
 
 <h3>Norm-based definition</h3>
 
-<p>Projection of point $x$ on set $S$ is usually <strong>defined</strong> by 
-$$P_S\ x  := \underset{s\in S}{\operatorname{argmin}}  \|s-x\|$$</p>
+<p>Projection of point <span class="math">\(x\)</span> on set <span class="math">\(S\)</span> is usually <strong>defined</strong> by
+\[P_S\ x  := \underset{s\in S}{\operatorname{argmin}}  \|s-x\|\]</p>
 
-<p>When $S$ is a closed convex set in a complete space, then this minimum is guaranteed to exist and be unique. when the norm is euclidean, it is equivalent to the orthogonality condition :
-$$\forall y \in C\, \langle y-P<em>Cx,x-P</em>Cx\rangle \geq 0$$</p>
+<p>When <span class="math">\(S\)</span> is a closed convex set in a complete space, then this minimum is guaranteed to exist and be unique. when the norm is euclidean, it is equivalent to the orthogonality condition :
+<span class="math">\(\forall y \in C\, \langle y-P_Cx,x-P_Cx\rangle \geq 0\)</span></p>
 
 <blockquote>
-  <p>hint : $\forall t \,\|Px-x\|^2\leq\|Px+t(y-Px)-x\|$
-$\leq \|Px-x\|^2+t\langle y-P<em>Cx,x-P</em>Cx\rangle + t^2\|y-Px\|^2$</p>
+  <p>hint : <span class="math">\(\forall t \,\|Px-x\|^2\leq\|Px+t(y-Px)-x\|\)</span>
+    <span class="math">\(\leq \|Px-x\|^2+t\langle y-P_Cx,x-P_Cx\rangle + t^2\|y-Px\|^2\)</span></p>
 </blockquote>
 
-<p>which for the particular case of a <strong>space</strong> $E$, leads to 
-$$ \langle y-P<em>Ex,x-P</em>Ex\rangle = 0$$</p>
+<p>which for the particular case of a <strong>space</strong> <span class="math">\(E\)</span>, leads to
+<span class="math">\(\langle y-P_Ex,x-P_Ex\rangle = 0\)</span></p>
 
 <h3>Operator definition</h3>
 
-<p>But projection can be defined more generally: Any idempotent operator $P^2 = P$ leads to a decomposition $I = P + (I - P)$  and a algebraic split $E = Range(P) \oplus Ker(P)$</p>
+<p>But projection can be defined more generally: Any idempotent operator <span class="math">\(P^2 = P\)</span> leads to a decomposition <span class="math">\(I = P + (I - P)\)</span>  and a algebraic split <span class="math">\(E = Range(P) \oplus Ker(P)\)</span></p>
 
 <blockquote>
 <ul>
-<li>$P(1-P)=0\implies Range(I-P) = Ker(P)$</li>
-<li>$P(1-P)=(1-P)P=0$ but
-$PQ=QP=0\implies Range(P) \oplus Range(Q)$
-as  $x+y =x'+y' $ with $x,x' \in Range(P), y,y'\in Range(Q)$
-$PQ=0 \implies  P(x + y) = P(x'+y') \implies  x = x'$
-$QP=0 \implies  Q(x + y) = Q(x'+y') \implies  y = y'$
+<li><span class="math">\(P(1-P)=0\implies Range(I-P) = Ker(P)\)</span></li>
+<li>
+<span class="math">\(P(1-P)=(1-P)P=0\)</span> but
+<span class="math">\(PQ=QP=0\implies Range(P) \oplus Range(Q)\)</span>
+as  <span class="math">\(x+y =x'+y'\)</span> with <span class="math">\(x,x' \in Range(P), y,y'\in Range(Q)\)</span>
+<span class="math">\(PQ=0 \implies  P(x + y) = P(x'+y') \implies  x = x'\)</span>
+<span class="math">\(QP=0 \implies  Q(x + y) = Q(x'+y') \implies  y = y'\)</span>
 so the decomposition is <strong>unique</strong>
 </li>
 </ul>
@@ -138,36 +140,36 @@ so the decomposition is <strong>unique</strong>
 
 <h3>Canonical operator</h3>
 
-<p>If $E=M\oplus S$ then we can define $P$ on $E$ which let $M$ invariant and replace $S$ with $0$. This defines the projection <strong>on $M=Range(P)$ along $S=Ker(P)$</strong>, or the projection on $M=Range(P)$ <strong>orthogonal to $S^{\perp}=Ker(P)^{\perp}$</strong></p>
+<p>If <span class="math">\(E=M\oplus S\)</span> then we can define <span class="math">\(P\)</span> on <span class="math">\(E\)</span> which let <span class="math">\(M\)</span> invariant and replace <span class="math">\(S\)</span> with <span class="math">\(0\)</span>. This defines the projection <strong>on <span class="math">\(M=Range(P)\)</span> along <span class="math">\(S=Ker(P)\)</span></strong>, or the projection on <span class="math">\(M=Range(P)\)</span> <strong>orthogonal to <span class="math">\(S^{\perp}=Ker(P)^{\perp}\)</span></strong></p>
 
 <h3>General operator</h3>
 
-<p>The projectors on $Range(A\in \mathcal{R}^{m\times n})$ spanning the column of $A$ along $B'\in\mathcal{R}^{k*n}$ is</p>
+<p>The projectors on <span class="math">\(Range(A\in \mathcal{R}^{m\times n})\)</span> spanning the column of <span class="math">\(A\)</span> along <span class="math">\(B'\in\mathcal{R}^{k*n}\)</span> is</p>
 
-<p>$$P=A(A^\dagger+BZ')$$</p>
+<p>\[P=A(A^\dagger+BZ')\]</p>
 
-<p>defining $$E = Range(A) \oplus Ker(A) = Range(P) \oplus Ker(P)$$</p>
+<p>defining <span class="math">\(\)</span>E = Range(A) \oplus Ker(A) = Range(P) \oplus Ker(P)<span class="math">\(\)</span></p>
 
 <h3>Unification</h3>
 
 <p>We always have that
-\begin{align<em>}
-  Ker(P')&amp;=Range(P)^{\perp}\
-  Ker(P)&amp;=Range(P')^{\perp}\
-\end{align</em>}
+<span class="math">\(\begin{align*}
+  Ker(P')&amp;=Range(P)^{\perp}\\
+  Ker(P)&amp;=Range(P')^{\perp}\\
+\end{align*}\)</span>
 And in finite dimension
-\begin{align<em>}
-Range(P')&amp;= Ker(P)^\perp \
-Range(P)&amp;= Ker(P')^\perp \
-\end{align</em>}</p>
+<span class="math">\(\begin{align*}
+Range(P')&amp;= Ker(P)^\perp \\
+Range(P)&amp;= Ker(P')^\perp \\
+\end{align*}\)</span></p>
 
 <p>(See <a href="http://www.amazon.co.uk/gp/product/0387709134/ref=as_li_qf_sp_asin_il?ie=UTF8&amp;camp=1634&amp;creative=6738&amp;creativeASIN=0387709134&amp;linkCode=as2&amp;tag=xquant-21">Brezis</a>)</p>
 
-<p>A symmetry of $P=P'$ implies $Range(P)= Range(P') \perp Ker(P)$ so that
-\begin{align<em>}
-Range(P) \oplus Ker(P)  &amp;= Range(P) \oplus Range(P)^\perp\
+<p>A symmetry of <span class="math">\(P=P'\)</span> implies <span class="math">\(Range(P)= Range(P') \perp Ker(P)\)</span> so that
+<span class="math">\(\begin{align*}
+Range(P) \oplus Ker(P)  &amp;= Range(P) \oplus Range(P)^\perp\\
 Range(P)^C &amp;= Range(P)^{\perp}
-\end{align</em>}</p>
+\end{align*}\)</span></p>
 
 <p>Uniting both definition of projection, algebraic and geometric</p>
 
@@ -175,10 +177,10 @@ Range(P)^C &amp;= Range(P)^{\perp}
 
 <h3>QR decomposition</h3>
 
-<p>Given a matrix $A$ whose columns, we would like to build up a simple orthonormal basis $Q=[q<em>1..q</em>n]$ which spans $Range(A)$, and rewrite $A=QR$ in it. The columns of $R$ are the coordinates in the basis $Q$ of the columns of $A$ as<br>\begin{align<em>}
-[a^1..a^i..a^n] &amp;= Q[r^1..r^i..r_n] = [Qr^1..Qr^i..Qr^n]\
-Qr^i &amp;= [q^1..q^n]\begin{bmatrix}r^i<em>1\..\r^i</em>n\end{bmatrix}=\sum<em>{j=1..n}q^jr^i</em>j
-\end{align</em>}</p>
+<p>Given a matrix <span class="math">\(A\)</span> whose columns, we would like to build up a simple orthonormal basis <span class="math">\(Q=[q_1..q_n]\)</span> which spans <span class="math">\(Range(A)\)</span>, and rewrite <span class="math">\(A=QR\)</span> in it. The columns of <span class="math">\(R\)</span> are the coordinates in the basis <span class="math">\(Q\)</span> of the columns of <span class="math">\(A\)</span> as<br><span class="math">\(\begin{align*}
+[a^1..a^i..a^n] &amp;= Q[r^1..r^i..r_n] = [Qr^1..Qr^i..Qr^n]\\
+Qr^i &amp;= [q^1..q^n]\begin{bmatrix}r^i_1\\..\\r^i_n\end{bmatrix}=\sum_{j=1..n}q^jr^i_j
+\end{align*}\)</span></p>
 
 <p>The method extends to conjugate gradient</p>
 
@@ -193,7 +195,7 @@ Qr^i &amp;= [q^1..q^n]\begin{bmatrix}r^i<em>1\..\r^i</em>n\end{bmatrix}=\sum<em>
 
 
 <p>And this is the main function.
-our main code works for $rows \geq columns$</p>
+our main code works for <span class="math">\(rows \geq columns\)</span></p>
 
 <pre class="fssnip">
 <span class="k">let</span> <span class="k">rec</span> <span onmouseout="hideTip(event, 'fs5', 6)" onmouseover="showTip(event, 'fs5', 6)" class="i">QR_GS</span> (<span onmouseout="hideTip(event, 'fs6', 7)" onmouseover="showTip(event, 'fs6', 7)" class="i">A</span><span class="o">:</span><span class="i">Matrix</span><span class="o">&lt;</span><span onmouseout="hideTip(event, 'fs3', 8)" onmouseover="showTip(event, 'fs3', 8)" class="i">double</span><span class="o">&gt;</span>) <span class="o">=</span> 
@@ -205,7 +207,7 @@ our main code works for $rows \geq columns$</p>
     </pre>
 
 
-<p>We will build up a the columns of Q incrementally, such that $span(A[1..k]) = span(Q[1..k])$ has the desired properties. For each column of $A$ considered we have to compute its coordinates, and potentially extend the basis.</p>
+<p>We will build up a the columns of Q incrementally, such that <span class="math">\(span(A[1..k]) = span(Q[1..k])\)</span> has the desired properties. For each column of <span class="math">\(A\)</span> considered we have to compute its coordinates, and potentially extend the basis.</p>
 
 <pre class="fssnip">
         <span class="k">let</span> <span class="i">res</span> <span class="o">=</span> { <span class="i">Q</span><span class="o">=</span> <span class="i">DenseMatrix</span><span class="o">.</span><span class="i">zeroCreate</span> <span class="i">n</span> <span class="i">n</span>  ; <span class="i">R</span> <span class="o">=</span> <span class="i">DenseMatrix</span><span class="o">.</span><span class="i">zeroCreate</span> <span class="i">n</span> <span class="i">tk</span> }
@@ -221,7 +223,7 @@ our main code works for $rows \geq columns$</p>
                      <span class="k">let</span> <span class="i">current</span> <span class="o">=</span> <span class="i">A</span><span class="o">.</span><span class="i">Column</span>(<span class="i">k</span>)<span class="o">.</span><span class="i">SubVector</span>(<span class="n">0</span>,<span class="i">tk</span>)</pre>
 
 
-<p>We remove from the current column of A its projections on the previously computed $Q[1..k-1]$ so that the remainder will be orthogonal to each of those columns</p>
+<p>We remove from the current column of A its projections on the previously computed <span class="math">\(Q[1..k-1]\)</span> so that the remainder will be orthogonal to each of those columns</p>
 
 <pre class="fssnip">
                     <span class="k">for</span> <span class="i">i</span> <span class="o">=</span> <span class="n">0</span> <span class="k">to</span> <span class="i">kbasis</span> <span class="o">-</span> <span class="n">1</span> <span class="k">do</span>                          
@@ -235,14 +237,14 @@ our main code works for $rows \geq columns$</p>
             </pre>
 
 
-<p>the final remainder is orthogonal to every  $Q[,i], i = 0..k-1$ because they are themselves orthogonal
+<p>the final remainder is orthogonal to every  <span class="math">\(Q[,i], i = 0..k-1\)</span> because they are themselves orthogonal
 \begin{align<em>}
 (I-P<em>j)(I-P</em>i)&amp;= I -P<em>i - P</em>j\ P<em>i (I-\sum</em>{j=0..k-1}P<em>j)&amp;= P</em>i\prod<em>{j=0..k-1}(1-P</em>j)=0
 \end{align</em>}</p>
 
-<p>More precisely $P<em>1$ projector on $V</em>1$ along $W<em>1$, $P</em>2$ projector on $V<em>2$ along $W2$ then $P</em>1P<em>2 = P</em>2P<em>1 = 0 \implies (P</em>1+P<em>2)^2 = P</em>1+P<em>2$and $(P</em>1+P<em>2) (V</em>1\cap V_2) =  0, (P1+P2)(V1+V2) = (V1+V2)$</p>
+<p>More precisely <span class="math">\(P_1\)</span> projector on <span class="math">\(V_1\)</span> along <span class="math">\(W_1\)</span>, <span class="math">\(P_2\)</span> projector on <span class="math">\(V_2\)</span> along <span class="math">\(W2\)</span> then <span class="math">\(P_1P_2 = P_2P_1 = 0 \implies (P_1+P_2)^2 = P_1+P_2\)</span>and <span class="math">\((P_1+P_2) (V_1\cap V_2) =  0, (P1+P2)(V1+V2) = (V1+V2)\)</span></p>
 
-<p>We compute the norm of the remainder, and normalize it. $Q[,i = 0..k-1] + remainder$ will be a orthonormal family, and will constitute the new orthonormal family</p>
+<p>We compute the norm of the remainder, and normalize it. <span class="math">\(Q[,i = 0..k-1] + remainder\)</span> will be a orthonormal family, and will constitute the new orthonormal family</p>
 
 <pre class="fssnip">
              <span class="k">let</span> <span class="i">normnewStuff</span> <span class="o">=</span> <span class="i">current</span><span class="o">.</span><span class="i">Norm</span>(<span class="n">2.</span>)</pre>
@@ -256,7 +258,7 @@ our main code works for $rows \geq columns$</p>
                  <span class="i">res</span><span class="o">.</span><span class="i">Q</span><span class="o">.</span><span class="i">SetColumn</span>(<span class="i">kbasis</span>, <span class="i">current</span>)</pre>
 
 
-<p>We have all the component of the column along the previous $Q[,j=0..kbasis-1]$, and we add coordinate of the remainder on the normalized remainder, which is of course just its norm</p>
+<p>We have all the component of the column along the previous <span class="math">\(Q[,j=0..kbasis-1]\)</span>, and we add coordinate of the remainder on the normalized remainder, which is of course just its norm</p>
 
 <pre class="fssnip">
                  <span class="i">res</span><span class="o">.</span><span class="i">R</span><span class="o">.</span><span class="i">At</span>(<span class="i">kmat</span>,<span class="i">kmat</span>, <span class="i">normnewStuff</span>)</pre>
