@@ -100,7 +100,8 @@
 <html><body><div class="span9" id="main">
           <h1>Projection, QR, etc..</h1>
 
-<p>A few notes on a very important subject, projection, with a bit of math, and some F# below.</p>
+<p>A few notes on a very important subject, projection, with a bit of math, and some F# below.
+The math is not especially didactic, but can serve as a blueprint to the the interest reader.</p>
 
 <h2>Projection</h2>
 
@@ -144,11 +145,15 @@ so the decomposition is <strong>unique</strong>
 
 <h3>General operator</h3>
 
-<p>The projectors on <span class="math">\(Range(A\in \mathcal{R}^{m\times n})\)</span> spanning the column of <span class="math">\(A\)</span> along <span class="math">\(B'\in\mathcal{R}^{k*n}\)</span> is</p>
+<p>The projectors on <span class="math">\(Range(A\in \mathcal{R}^{m\times n})\)</span> spanning the column of <span class="math">\(A\)</span> along <span class="math">\(B'\in\mathcal{R}^{k*n}\)</span> with <span class="math">\(m+k =n\)</span></p>
 
 <p>\[P=A(A^\dagger+BZ')\]</p>
 
-<p>defining <span class="math">\(\)</span>E = Range(A) \oplus Ker(A) = Range(P) \oplus Ker(P)<span class="math">\(\)</span></p>
+<p>with <span class="math">\(Z\in Ker(A^\perp)\)</span></p>
+
+<p>This defines a split <span class="math">\(E = Range(A) \oplus Ker(A) = Range(P) \oplus Ker(P)\)</span></p>
+
+<p>Minimizing <span class="math">\(\|x-P_Bx\|\)</span> over <span class="math">\(B\)</span> leads to the orthogonal projection and a symetric <span class="math">\(P_B\)</span>.</p>
 
 <h3>Unification</h3>
 
@@ -156,8 +161,9 @@ so the decomposition is <strong>unique</strong>
 <span class="math">\(\begin{align*}
   Ker(P')&amp;=Range(P)^{\perp}\\
   Ker(P)&amp;=Range(P')^{\perp}\\
-\end{align*}\)</span>
-And in finite dimension
+\end{align*}\)</span></p>
+
+<p>And in finite dimension
 <span class="math">\(\begin{align*}
 Range(P')&amp;= Ker(P)^\perp \\
 Range(P)&amp;= Ker(P')^\perp \\
@@ -168,10 +174,9 @@ Range(P)&amp;= Ker(P')^\perp \\
 <p>A symmetry of <span class="math">\(P=P'\)</span> implies <span class="math">\(Range(P)= Range(P') \perp Ker(P)\)</span> so that
 <span class="math">\(\begin{align*}
 Range(P) \oplus Ker(P)  &amp;= Range(P) \oplus Range(P)^\perp\\
-Range(P)^C &amp;= Range(P)^{\perp}
-\end{align*}\)</span></p>
+\end{align*}\)</span> or <span class="math">\(Range(P)^C = Range(P)^{\perp}\)</span></p>
 
-<p>Uniting both definition of projection, algebraic and geometric</p>
+<p>Effectively uniting both definition of projection, algebraic and geometric</p>
 
 <h1>Euclidian distance and QR decomposition</h1>
 
@@ -238,9 +243,7 @@ our main code works for <span class="math">\(rows \geq columns\)</span></p>
 
 
 <p>the final remainder is orthogonal to every  <span class="math">\(Q[,i], i = 0..k-1\)</span> because they are themselves orthogonal
-\begin{align<em>}
-(I-P<em>j)(I-P</em>i)&amp;= I -P<em>i - P</em>j\ P<em>i (I-\sum</em>{j=0..k-1}P<em>j)&amp;= P</em>i\prod<em>{j=0..k-1}(1-P</em>j)=0
-\end{align</em>}</p>
+<span class="math">\(\begin{align*}(I-P_j)(I-P_i)&amp;= I -P_i - P_j\\ P_i (I-\sum_{j=0..k-1}P_j)&amp;= P_i\prod_{j=0..k-1}(1-P_j)=0\end{align*}\)</span></p>
 
 <p>More precisely <span class="math">\(P_1\)</span> projector on <span class="math">\(V_1\)</span> along <span class="math">\(W_1\)</span>, <span class="math">\(P_2\)</span> projector on <span class="math">\(V_2\)</span> along <span class="math">\(W2\)</span> then <span class="math">\(P_1P_2 = P_2P_1 = 0 \implies (P_1+P_2)^2 = P_1+P_2\)</span>and <span class="math">\((P_1+P_2) (V_1\cap V_2) =  0, (P1+P2)(V1+V2) = (V1+V2)\)</span></p>
 
